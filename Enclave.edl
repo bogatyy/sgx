@@ -1,0 +1,10 @@
+enclave {
+    from "sgx_tcrypto.h" import sgx_ec256_public_t;
+
+    trusted {
+        public void ecall_generate_key();
+        public void ecall_get_public_key([out] sgx_ec256_public_t* key);
+        public void ecall_store_input_number([in, size=len] uint8_t* encrypted_data, size_t len, int is_second);
+        public void ecall_get_sum([out] int* sum);
+    };
+};
